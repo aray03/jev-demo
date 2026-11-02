@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intro to Jev</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- 1. Title -->
+  <section class="center">
+    <div class="kicker">TypeSafe · System One</div>
+    <h1>Jev</h1>
+    <h3>AI that answers instead of chatting</h3>
+    <p class="muted" style="font-size:0.6em;margin-top:2em">Ray · November 2026</p>
+    <aside class="notes">
+      Today: what Jev is, how it differs from Claude and ChatGPT, how cheap it is,
+      and then we all make accounts and play in the Playground.
+    </aside>
+  </section>
+
+  <!-- 2. What is Jev -->
+  <section>
+    <div class="kicker">The basics</div>
+    <h2>What is Jev?</h2>
+    <ul>
+      <li>The first public <span class="accent">System One model</span>, made by TypeSafe</li>
+      <li>You send <strong>state</strong> (text, JSON, images) and a <strong>typed question</strong></li>
+      <li>You get back a <strong>typed answer</strong> with <span class="accent">calibrated probabilities</span></li>
+      <li>It doesn't write replies, code, or explanations. It <em>judges</em>.</li>
+    </ul>
+    <div class="flow">
+      <div class="card"><strong>State</strong><br><span class="muted">a support email</span></div>
+      <div class="arrow">+</div>
+      <div class="card"><strong>Question</strong><br><span class="muted">"Is this a refund request?"</span></div>
+      <div class="arrow">→</div>
+      <div class="card" style="border-color:var(--jev)"><strong class="accent">0.94</strong><br><span class="muted">probability it's true</span></div>
+    </div>
+    <aside class="notes">
+      Think of it as programmable common sense. Your code asks a precise question and gets
+      a number back, not a paragraph you have to parse.
+    </aside>
+  </section>
+
+  <!-- 3. System One vs System Two -->
+  <section>
+    <div class="kicker">The big difference</div>
+    <h2>System One vs System Two</h2>
+    <div class="cols">
+      <div class="card jev">
+        <h3 class="accent">Jev: System One</h3>
+        <ul>
+          <li>Fast, intuitive judgments</li>
+          <li>Typed output: Choice, Noul, Score, Box</li>
+          <li>Calibrated probabilities on every answer</li>
+          <li>No free text, so no answer to parse</li>
+          <li>Pay for input only. <strong>Output is free.</strong></li>
+        </ul>
+      </div>
+      <div class="card llm">
+        <h3 class="claude">Claude / ChatGPT: System Two</h3>
+        <ul>
+          <li>Slow, deliberate reasoning and generation</li>
+          <li>Free-form text you have to parse</li>
+          <li>Can sound confident while being wrong</li>
+          <li>Great for writing, coding, and multi-step plans</li>
+          <li>Output tokens cost <strong>5×</strong> input tokens</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.55em;margin-top:0.8em">
+      The names come from Kahneman's <em>Thinking, Fast and Slow</em>: System 1 is quick intuition, System 2 is slow, careful thought.
+    </p>
+    <aside class="notes">
+      They aren't competitors so much as different tools. An LLM is a reasoning engine;
+      Jev is the quick gut-check you'd want to call thousands of times a second.
+    </aside>
+  </section>
+
+  <!-- 4. Recycling detector -->
+  <section>
+    <div class="kicker">Example</div>
+    <h2>Recycling detector</h2>
+    <div class="cols" style="grid-template-columns:3fr 2fr;align-items:center">
+      <div>
+        <img class="shot" src="images/recycling.png" alt="Recycling detector screenshot" onerror="this.classList.add('missing')">
+        <div class="shot-placeholder">Add images/recycling.png</div>
+      </div>
+      <div>
+        <p>Take a photo of an item and Jev decides whether it goes in the recycling bin.</p>
+      </div>
+    </div>
+    <aside class="notes">Quick demo. Don't go too deep.</aside>
+  </section>
+
+  <!-- 5. Image detection cost -->
+  <section>
+    <div class="kicker">Cost · images</div>
+    <h2>Labeling 1,000 images</h2>
+    <div class="chart-wrap"><canvas data-chart="chart-image"></canvas></div>
+    <div class="footnote">
+      Estimate: <span id="img-tokens"></span> input tokens per image for every model (Claude's w×h/750 formula for a ~1092px photo; TypeSafe hasn't published its image-token formula yet),
+      plus <span id="img-out"></span> output tokens for LLMs. Jev output is free. List prices as of Nov 2, 2026.
+    </div>
+    <aside class="notes">
+      Even against the cheapest LLMs, Jev is about <span id="x-img-haiku"></span> cheaper here,
+      and roughly 275× cheaper than the frontier models.
+    </aside>
+  </section>
+
+  <!-- 6. Price per million input tokens -->
+  <section>
+    <div class="kicker">Cost · per token</div>
+    <h2>Price per million input tokens</h2>
+    <div class="chart-wrap"><canvas data-chart="chart-input"></canvas></div>
+    <p style="font-size:0.7em;text-align:center;margin-top:0.3em">
+      <span class="accent" style="font-weight:800" id="x-fable"></span> cheaper input than Claude Fable 5.1, and Jev's output is free.
+    </p>
+    <div class="footnote">
+      Sources: docs.typesafe.ai/models · platform.claude.com/docs/en/about-claude/pricing · developers.openai.com/api/docs/pricing. Standard tier, Nov 2, 2026.
+    </div>
+    <aside class="notes">
+      $42 per <em>billion</em> tokens. The chart is log scale; on a normal scale Jev's bar would be invisible.
+    </aside>
+  </section>
+
+  <!-- 7. Million classifications -->
+  <section>
+    <div class="kicker">Cost · at scale</div>
+    <h2>One million classifications</h2>
+    <div class="chart-wrap"><canvas data-chart="chart-classify"></canvas></div>
+    <p style="font-size:0.7em;text-align:center;margin-top:0.3em">
+      <span class="accent" style="font-weight:800" id="jev-classify"></span> on Jev vs <span class="claude" style="font-weight:800" id="fable-classify"></span> on Claude Fable 5.1
+    </p>
+    <div class="footnote">
+      Assumes <span id="cls-in"></span> input tokens and <span id="cls-out"></span> output tokens per call (e.g. tagging a short message). Standard-tier list prices, Nov 2, 2026.
+    </div>
+    <aside class="notes">
+      This is the kind of workload Jev is built for: lots of small yes/no or pick-one decisions.
+    </aside>
+  </section>
+
+  <!-- 8. TypeSafe's benchmark -->
+  <section class="center">
+    <div class="kicker">TypeSafe's own numbers</div>
+    <h2>On System One tasks</h2>
+    <div class="cols" style="margin-top:0.8em">
+      <div>
+        <div class="big-stat">193.6×</div>
+        <p>faster</p>
+        <p class="muted" style="font-size:0.55em">0.114 s vs 8.566 s</p>
+      </div>
+      <div>
+        <div class="big-stat">444.6×</div>
+        <p>cheaper</p>
+        <p class="muted" style="font-size:0.55em">$0.000081 vs $0.013880</p>
+      </div>
+    </div>
+    <div class="footnote">Vendor claim from typesafe.ai, based on their own workflow comparison against LLMs. Not independently verified.</div>
+    <aside class="notes">
+      Be fair: this is TypeSafe's benchmark on tasks chosen to suit Jev. It's still a big gap.
+    </aside>
+  </section>
+
+  <!-- 9. Pokémon -->
+  <section>
+    <div class="kicker">Example</div>
+    <h2>Pokémon</h2>
+    <div class="cols" style="grid-template-columns:3fr 2fr;align-items:center">
+      <div>
+        <img class="shot" src="images/pokemon.png" alt="Pokémon project screenshot" onerror="this.classList.add('missing')">
+        <div class="shot-placeholder">Add images/pokemon.png</div>
+      </div>
+      <div>
+        <p>Pokémon, powered by Jev. <span class="muted">(Ray: add a one-line description.)</span></p>
+      </div>
+    </div>
+    <aside class="notes">Quick demo. Don't go too deep.</aside>
+  </section>
+
+  <!-- 10. Question types -->
+  <section>
+    <div class="kicker">How you ask</div>
+    <h2>Four question types</h2>
+    <div class="cols-4">
+      <div class="card jev">
+        <h3 class="accent">Choice</h3>
+        <p>Pick one option from a list.</p>
+        <p class="muted">"Which department should get this email?" → billing 0.81</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Noul</h3>
+        <p>Probability a statement is true.</p>
+        <p class="muted">"The customer is frustrated." → 0.92</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Score</h3>
+        <p>A position on levels you describe.</p>
+        <p class="muted">"How harsh is this review?" → 3.4 / 5</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Box</h3>
+        <p>Where something is in an image.</p>
+        <p class="muted">"Where is the coffee mug?" → x, y, w, h</p>
+      </div>
+    </div>
+    <aside class="notes">
+      Noul is TypeSafe's name for a probabilistic boolean. Each question is answered on its own,
+      and you can send many in one request that share the same state.
+    </aside>
+  </section>
+
+  <!-- 11. Judgments vs decisions -->
+  <section>
+    <div class="kicker">How to build with it</div>
+    <h2>Judgments from Jev,<br>decisions in code</h2>
+    <div class="flow">
+      <div class="card"><strong>Jev</strong><br><span class="muted">"Is the customer frustrated?"<br>"Is it about a refund?"</span></div>
+      <div class="arrow">→</div>
+      <div class="card"><strong>Your code</strong><br><span class="muted">a truth table / if-statements</span></div>
+      <div class="arrow">→</div>
+      <div class="card" style="border-color:var(--jev)"><strong class="accent">Action</strong><br><span class="muted">escalate · auto-reply · ignore</span></div>
+    </div>
+    <ul style="font-size:0.7em;margin-top:1em">
+      <li>Don't ask "Should we escalate?" Ask the small judgments the decision depends on.</li>
+      <li>Rule of thumb: above <strong>0.7</strong> means yes, below <strong>0.3</strong> means no, and in between means unsure.</li>
+    </ul>
+    <aside class="notes">
+      Keeps the logic visible and testable. Jev supplies inputs; code owns the decision.
+    </aside>
+  </section>
+
+  <!-- 12. Accounts -->
+  <section>
+    <div class="kicker">Let's do it together</div>
+    <h2>Make an account</h2>
+    <div class="qr-grid">
+      <div class="card">
+        <strong>1 · Sign up / log in</strong>
+        <div class="qr" data-qr="https://console.typesafe.ai/"></div>
+        <a href="https://console.typesafe.ai/" target="_blank">console.typesafe.ai</a>
+      </div>
+      <div class="card">
+        <strong>2 · Get an API key</strong>
+        <div class="qr" data-qr="https://console.typesafe.ai/keys"></div>
+        <a href="https://console.typesafe.ai/keys" target="_blank">console.typesafe.ai/keys</a>
+      </div>
+      <div class="card">
+        <strong>3 · Quickstart</strong>
+        <div class="qr" data-qr="https://docs.typesafe.ai/introduction/quickstart"></div>
+        <a href="https://docs.typesafe.ai/introduction/quickstart" target="_blank">docs.typesafe.ai/…/quickstart</a>
+      </div>
+    </div>
+    <aside class="notes">Pause here until everyone is logged in. The API key is optional for the Playground.</aside>
+  </section>
+
+  <!-- 13. Sandbox -->
+  <section>
+    <div class="kicker">Hands on</div>
+    <h2>Sandbox time</h2>
+    <div class="cols" style="grid-template-columns:1fr 2fr;align-items:center">
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div class="qr" data-qr="https://console.typesafe.ai/playground"></div>
+        <a href="https://console.typesafe.ai/playground" target="_blank" style="font-size:0.6em">console.typesafe.ai/playground</a>
+      </div>
+      <div>
+        <p style="font-size:0.75em">Things to try:</p>
+        <ul style="font-size:0.7em">
+          <li><strong class="accent">Noul</strong>: paste a tweet. "The author is being sarcastic."</li>
+          <li><strong class="accent">Choice</strong>: a support message. Route it to billing, shipping, or tech.</li>
+          <li><strong class="accent">Score</strong>: a restaurant review. "How harsh is it?" on a 1–5 scale.</li>
+          <li><strong class="accent">Box</strong>: upload a photo. "Where is the dog?"</li>
+          <li>Try to trick it, then see how the probability changes.</li>
+        </ul>
+      </div>
+    </div>
+    <aside class="notes">Give it 10 to 15 minutes. Ask people to share the weirdest answer they got.</aside>
+  </section>
+
+  <!-- 14. Resources -->
+  <section class="center">
+    <div class="kicker">Keep going</div>
+    <h2>Resources &amp; Q&amp;A</h2>
+    <ul style="display:inline-block;text-align:left;font-size:0.8em">
+      <li><a href="https://typesafe.ai" target="_blank">typesafe.ai</a>: the company site</li>
+      <li><a href="https://docs.typesafe.ai/introduction" target="_blank">docs.typesafe.ai</a>: docs and quickstart</li>
+      <li><a href="https://docs.typesafe.ai/cookbooks" target="_blank">Cookbooks</a>: worked examples</li>
+      <li><a href="https://docs.typesafe.ai/primitives" target="_blank">Question types</a>: Choice, Noul, Score, Box</li>
+    </ul>
+    <p class="muted" style="font-size:0.6em;margin-top:1.5em">Questions?</p>
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/charts.js"></script>
+<script>
+  fillAssumptions();
+
+  document.querySelectorAll('[data-qr]').forEach(el => {
+    new QRCode(el, { text: el.dataset.qr, width: 170, height: 170, colorDark: '#0d1117', colorLight: '#ffffff' });
+  });
+
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    width: 1280,
+    height: 720,
+    margin: 0.06,
+    plugins: [RevealNotes],
+  }).then(() => renderChartsIn(Reveal.getCurrentSlide()));
+
+  Reveal.on('slidechanged', e => renderChartsIn(e.currentSlide));
+</script>
+</body>
+</html>
