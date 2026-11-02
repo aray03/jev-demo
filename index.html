@@ -249,142 +249,107 @@
     </aside>
   </section>
 
-  <!-- Code examples for the four question types -->
+  <!-- Playground JSON examples for the question types -->
   <section>
-    <div class="kicker">Try it · Choice</div>
+    <div class="kicker">Try it in the Playground · Choice</div>
     <h2 class="code-title">Choice <span class="muted">Pick one option from a list.</span></h2>
-    <div class="code-wrap">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre class="code-block"><code class="language-python" data-trim data-noescape>
-# pip install typesafe-sdk
-# export TYPESAFE_API_KEY="your-api-key"
-from typesafe_sdk import Choice, TypeSafeClient
-
-email = "Hi, I was charged twice for my subscription this month."
-
-with TypeSafeClient(model="jev-latest") as client:  # reads TYPESAFE_API_KEY
-    result = client.system_one(
-        state=email,
-        questions={
-            "department": Choice(
-                instructions="Which team should handle this email?",
-                criteria={
-                    "billing": "Payments, charges, or subscriptions",
-                    "shipping": "Deliveries, tracking, or lost packages",
-                    "technical": "Bugs, errors, or login problems",
-                },
-            ),
-        },
-    )
-
-answer = result.choices["department"]
-print(answer.choice)         # e.g. "billing"
-print(answer.probabilities)  # probability of each option
-      </code></pre>
+    <div class="cols json-cols">
+      <div class="code-wrap">
+        <div class="code-label">State</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "email": "Hi, I was charged twice for my subscription this month. Can you fix this?"
+}
+        </code></pre>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Questions</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "department": {
+    "type": "choice",
+    "instructions": "Which team should handle `email`?",
+    "criteria": {
+      "billing": "Payments, charges, or subscriptions",
+      "shipping": "Deliveries, tracking, or lost packages",
+      "technical": "Bugs, errors, or login problems"
+    }
+  }
+}
+        </code></pre>
+      </div>
     </div>
-    <p class="code-tip">The keys in <code>criteria</code> are the options, and the text explains each one to Jev.</p>
-    <aside class="notes">Everyone can copy this from the deck on their own laptop. It needs a TypeSafe API key.</aside>
+    <p class="code-tip">Expect <code>billing</code>. Change the email to a broken login and see it switch.</p>
+    <aside class="notes">Paste State into the state box and Questions into the questions box at console.typesafe.ai/playground.</aside>
   </section>
 
   <section>
-    <div class="kicker">Try it · Noul</div>
+    <div class="kicker">Try it in the Playground · Noul</div>
     <h2 class="code-title">Noul <span class="muted">Probability that a statement is true.</span></h2>
-    <div class="code-wrap">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre class="code-block"><code class="language-python" data-trim data-noescape>
-# pip install typesafe-sdk
-# export TYPESAFE_API_KEY="your-api-key"
-from typesafe_sdk import Noul, TypeSafeClient
-
-message = "This is the THIRD time I've asked. Nobody is helping me."
-
-with TypeSafeClient(model="jev-latest") as client:
-    result = client.system_one(
-        state=message,
-        questions={
-            "frustrated": Noul(instructions="The customer is frustrated."),
-        },
-    )
-
-p = result.nouls["frustrated"].noul  # probability from 0 to 1
-if p &gt; 0.7:
-    print("frustrated", p)
-elif p &lt; 0.3:
-    print("not frustrated", p)
-else:
-    print("unsure", p)
-      </code></pre>
+    <div class="cols json-cols">
+      <div class="code-wrap">
+        <div class="code-label">State</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "message": "This is the THIRD time I've asked. Nobody is helping me."
+}
+        </code></pre>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Questions</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "frustrated": {
+    "type": "noul",
+    "instructions": "The customer who wrote `message` is frustrated."
+  }
+}
+        </code></pre>
+      </div>
     </div>
-    <p class="code-tip">Jev gives the probability; your code decides what counts as yes, no, or unsure.</p>
-    <aside class="notes">Everyone can copy this from the deck on their own laptop. It needs a TypeSafe API key.</aside>
+    <p class="code-tip">You get a probability from 0 to 1. Try a polite message and watch it drop.</p>
+    <aside class="notes">Paste State into the state box and Questions into the questions box at console.typesafe.ai/playground.</aside>
   </section>
 
   <section>
-    <div class="kicker">Try it · Score</div>
+    <div class="kicker">Try it in the Playground · Score</div>
     <h2 class="code-title">Score <span class="muted">A position on levels you describe.</span></h2>
-    <div class="code-wrap">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre class="code-block"><code class="language-python" data-trim data-noescape>
-# pip install typesafe-sdk
-# export TYPESAFE_API_KEY="your-api-key"
-from typesafe_sdk import Score, TypeSafeClient
-
-review = "The food was cold and the waiter ignored us for 20 minutes."
-
-with TypeSafeClient(model="jev-latest") as client:
-    result = client.system_one(
-        state=review,
-        questions={
-            "harshness": Score(
-                instructions="How harsh is this restaurant review?",
-                criteria=[
-                    "Glowing, nothing negative",
-                    "Mostly positive with a small complaint",
-                    "Mixed, good and bad",
-                    "Mostly negative",
-                    "Scathing and angry",
-                ],
-            ),
-        },
-    )
-
-answer = result.scores["harshness"]
-print(answer.score)          # 0 = first level, 4 = last level
-print(answer.probabilities)  # probability of each level
-      </code></pre>
+    <div class="cols json-cols">
+      <div class="code-wrap">
+        <div class="code-label">State</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "review": "The food was cold and the waiter ignored us for 20 minutes."
+}
+        </code></pre>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Questions</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "harshness": {
+    "type": "score",
+    "instructions": "How harsh is `review`?",
+    "criteria": [
+      "Glowing, nothing negative",
+      "Mostly positive with a small complaint",
+      "Mixed, good and bad",
+      "Mostly negative",
+      "Scathing and angry"
+    ]
+  }
+}
+        </code></pre>
+      </div>
     </div>
-    <p class="code-tip">Write each level as a situation that makes sense on its own.</p>
-    <aside class="notes">Everyone can copy this from the deck on their own laptop. It needs a TypeSafe API key.</aside>
-  </section>
-
-  <section>
-    <div class="kicker">Try it · Box</div>
-    <h2 class="code-title">Box <span class="muted">Where something is in an image.</span></h2>
-    <div class="code-wrap">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre class="code-block"><code class="language-python" data-trim data-noescape>
-# pip install typesafe-sdk
-# export TYPESAFE_API_KEY="your-api-key"
-from pathlib import Path
-from typesafe_sdk import Box, Image, Noul, TypeSafeClient
-
-with TypeSafeClient(model="jev-latest") as client:
-    result = client.system_one(
-        state={"photo": Image(Path("kitchen.jpg"))},  # PNG or JPEG
-        questions={
-            "has_mug": Noul(instructions="Is there a coffee mug in `photo`?"),
-            "mug": Box(instructions="the coffee mug in `photo`"),
-        },
-        extra_headers={"TypeSafe-Danger-Zone-Images": "true"},  # images are opt-in
-    )
-
-if result.nouls["has_mug"].noul &gt; 0.7:
-    box = result.boxes["mug"].box  # each edge is from 0 to 1
-    print(box.left, box.top, box.right, box.bottom)
-      </code></pre>
-    </div>
-    <p class="code-tip">A Box always returns a location, so ask a Noul alongside it to check that the thing is there at all. Images must be 280–1568 px on each side.</p>
-    <aside class="notes">Everyone can copy this from the deck on their own laptop. It needs a TypeSafe API key.</aside>
+    <p class="code-tip">Levels are numbered 0 to 4. Look at the probability for each level, not just the score.</p>
+    <aside class="notes">Paste State into the state box and Questions into the questions box at console.typesafe.ai/playground.</aside>
   </section>
 
   <!-- 11. Judgments vs decisions -->

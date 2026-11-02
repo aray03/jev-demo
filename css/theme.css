@@ -184,3 +184,17 @@ body, .reveal-viewport { background: var(--bg); }
 }
 .copy-btn:hover { filter: brightness(1.1); }
 .reveal .code-tip { font-size: 0.5em; color: var(--muted); margin-top: 0.5em; }
+
+.json-cols { grid-template-columns: 2fr 3fr; align-items: start; }
+.reveal .json-cols pre.code-block { font-size: 0.6em; }
+.code-label {
+  font-size: 0.45em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  line-height: 30px;
+  margin-bottom: 0.3em;
+}
+.json-cols .copy-btn { top: 0; right: 0; padding: 4px 12px; font-size: 14px; }
+.reveal .json-cols pre.code-block code { white-space: pre-wrap; }
