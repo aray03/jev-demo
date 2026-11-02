@@ -61,7 +61,7 @@ const valueLabels = {
   },
 };
 
-function barChart(canvas, values, axisTitle) {
+function barChart(canvas, values, axisTitle, scale = 'logarithmic') {
   return new Chart(canvas, {
     type: 'bar',
     data: {
@@ -81,9 +81,10 @@ function barChart(canvas, values, axisTitle) {
       plugins: { legend: { display: false }, tooltip: { enabled: false } },
       scales: {
         x: {
-          type: 'logarithmic',
+          type: scale,
           title: { display: true, text: axisTitle, color: MUTED, font: { size: 15 } },
           ticks: { color: MUTED, font: { size: 14 }, maxRotation: 0, callback: v => {
+            if (scale !== 'logarithmic') return v === 0 ? '$0' : money(v);
             const exp = Math.log10(v);
             return Number.isInteger(Math.round(exp * 1e6) / 1e6) ? money(v) : '';
           } },
@@ -103,7 +104,8 @@ const CHARTS = {
   'chart-image': canvas => barChart(
     canvas,
     PRICES.map(p => jobCost(p, IMAGE_INPUT_TOKENS, IMAGE_OUTPUT_TOKENS, IMAGE_COUNT)),
-    'Cost to label 1,000 images (log scale)',
+    'Cost to label 1,000 images',
+    'linear',
   ),
   'chart-input': canvas => barChart(
     canvas,
