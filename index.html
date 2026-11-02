@@ -259,7 +259,7 @@
         <button class="copy-btn" type="button">Copy</button>
         <pre class="code-block"><code class="language-json" data-trim data-noescape>
 {
-  "email": "Hi, I was charged twice for my subscription this month. Can you fix this?"
+  "class": "I want to be a dnd class with lots of spells."
 }
         </code></pre>
       </div>
@@ -268,20 +268,25 @@
         <button class="copy-btn" type="button">Copy</button>
         <pre class="code-block"><code class="language-json" data-trim data-noescape>
 {
-  "department": {
+  "dnd_class": {
     "type": "choice",
-    "instructions": "Which team should handle `email`?",
+    "instructions": "Which D&amp;D class best fits what the player wants in `class`?",
     "criteria": {
-      "billing": "Payments, charges, or subscriptions",
-      "shipping": "Deliveries, tracking, or lost packages",
-      "technical": "Bugs, errors, or login problems"
+      "wizard": "Studies spellbooks, the biggest spell list",
+      "sorcerer": "Born with magic, fewer spells but flexible",
+      "cleric": "Divine magic, healing and support",
+      "druid": "Nature magic, can turn into animals",
+      "bard": "Magic through music and charm",
+      "fighter": "Weapons and armor, no spells",
+      "rogue": "Stealth, sneak attacks, and tricks",
+      "barbarian": "Rage and raw strength, no spells"
     }
   }
 }
         </code></pre>
       </div>
     </div>
-    <p class="code-tip">Expect <code>billing</code>. Change the email to a broken login and see it switch.</p>
+    <p class="code-tip">Watch the probability spread across the spellcasters. Then try "I want to hit things really hard."</p>
     <aside class="notes">Paste State into the state box and Questions into the questions box at console.typesafe.ai/playground.</aside>
   </section>
 
