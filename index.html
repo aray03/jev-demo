@@ -24,6 +24,36 @@
     </aside>
   </section>
 
+  <!-- The problem with LLMs -->
+  <section>
+    <div class="kicker">Why this exists</div>
+    <h2>The problem with LLMs</h2>
+    <div class="cols" style="grid-template-columns:3fr 2fr">
+      <div class="card llm" style="font-size:1.05em">
+        <p class="muted">Prompt</p>
+        <p>Is this email a refund request? <strong>Answer only "yes" or "no".</strong><br>
+          <span class="muted">"My order showed up smashed. Can I get my money back?"</span></p>
+        <p class="muted" style="margin-top:0.6em">LLM reply</p>
+        <p class="claude">"Yes, this appears to be a refund request. The customer reports their order arrived damaged and is asking for their money back."</p>
+      </div>
+      <div>
+        <pre class="code-block"><code>if reply == "yes":
+    issue_refund()</code></pre>
+        <p style="font-size:0.65em">✗ Never runs. The reply is a whole sentence, not <code>"yes"</code>.</p>
+        <ul style="font-size:0.6em;margin-top:0.6em">
+          <li>You have to parse free text</li>
+          <li>No real confidence score</li>
+          <li>Slow, and every output word costs money</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.45em;margin-top:0.8em">Illustrative example of a common failure mode.</p>
+    <aside class="notes">
+      Ask for "yes or no" and you often get a paragraph. You end up writing fragile parsing code,
+      and you still don't know how sure the model is.
+    </aside>
+  </section>
+
   <!-- 2. What is Jev -->
   <section>
     <div class="kicker">The basics</div>

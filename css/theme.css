@@ -136,3 +136,17 @@ body, .reveal-viewport { background: var(--bg); }
 .reveal .progress { color: var(--jev); }
 .reveal .controls { color: var(--jev); }
 .reveal .slide-number { background: transparent; color: var(--muted); font-family: 'Inter', sans-serif; }
+
+.reveal pre.code-block {
+  width: 100%;
+  margin: 0 0 0.4em;
+  box-shadow: none;
+  font-size: 0.6em;
+}
+.reveal pre.code-block code {
+  display: block;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  line-height: 1.5;
+  white-space: pre;
+}
