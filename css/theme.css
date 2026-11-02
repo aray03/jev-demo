@@ -150,3 +150,11 @@ body, .reveal-viewport { background: var(--bg); }
   line-height: 1.5;
   white-space: pre;
 }
+
+.reveal img.book {
+  height: 140px;
+  width: auto;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
