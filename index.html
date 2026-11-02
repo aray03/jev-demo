@@ -35,7 +35,7 @@
         <p>Is this email a refund request? <strong>Answer only "yes" or "no".</strong><br>
           <span class="muted">"My order showed up smashed. Can I get my money back?"</span></p>
         <p class="muted" style="margin-top:0.6em">LLM reply</p>
-        <p class="claude">"Yes, this appears to be a refund request. The customer reports their order arrived damaged and is asking for their money back."</p>
+        <p class="claude">"Yes, you are absolutely right! This appears to be a refund request. The customer reports their order arrived damaged and is asking for their money back."</p>
       </div>
       <div>
         <pre class="code-block"><code>if reply == "yes":
@@ -243,6 +243,9 @@
         <p class="muted">"Where is the coffee mug?" → x, y, w, h</p>
       </div>
     </div>
+    <p style="font-size:0.6em;margin-top:0.8em;text-align:center">
+      Try them yourself: <a href="https://console.typesafe.ai/playground" target="_blank">console.typesafe.ai/playground</a>
+    </p>
     <aside class="notes">
       Noul is TypeSafe's name for a probabilistic boolean. Each question is answered on its own,
       and you can send many in one request that share the same state.
