@@ -61,7 +61,7 @@ const valueLabels = {
   },
 };
 
-function barChart(canvas, values, axisTitle, scale = 'logarithmic') {
+function barChart(canvas, values, axisTitle) {
   return new Chart(canvas, {
     type: 'bar',
     data: {
@@ -81,13 +81,9 @@ function barChart(canvas, values, axisTitle, scale = 'logarithmic') {
       plugins: { legend: { display: false }, tooltip: { enabled: false } },
       scales: {
         x: {
-          type: scale,
+          type: 'linear',
           title: { display: true, text: axisTitle, color: MUTED, font: { size: 15 } },
-          ticks: { color: MUTED, font: { size: 14 }, maxRotation: 0, callback: v => {
-            if (scale !== 'logarithmic') return v === 0 ? '$0' : money(v);
-            const exp = Math.log10(v);
-            return Number.isInteger(Math.round(exp * 1e6) / 1e6) ? money(v) : '';
-          } },
+          ticks: { color: MUTED, font: { size: 14 }, maxRotation: 0, callback: v => (v === 0 ? '$0' : money(v)) },
           grid: { color: GRID },
         },
         y: {
@@ -105,17 +101,16 @@ const CHARTS = {
     canvas,
     PRICES.map(p => jobCost(p, IMAGE_INPUT_TOKENS, IMAGE_OUTPUT_TOKENS, IMAGE_COUNT)),
     'Cost to label 1,000 images',
-    'linear',
   ),
   'chart-input': canvas => barChart(
     canvas,
     PRICES.map(p => p.input),
-    'USD per 1M input tokens (log scale)',
+    'USD per 1M input tokens',
   ),
   'chart-classify': canvas => barChart(
     canvas,
     PRICES.map(p => jobCost(p, CLASSIFY_INPUT_TOKENS, CLASSIFY_OUTPUT_TOKENS, CLASSIFY_COUNT)),
-    'Cost of 1,000,000 classifications (log scale)',
+    'Cost of 1,000,000 classifications',
   ),
 };
 
