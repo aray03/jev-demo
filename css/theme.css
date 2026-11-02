@@ -158,3 +158,29 @@ body, .reveal-viewport { background: var(--bg); }
   border-radius: 4px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
+
+.reveal h2.code-title { font-size: 1.1em; margin-bottom: 0.35em; }
+.reveal h2.code-title .muted { font-size: 0.55em; font-weight: 400; letter-spacing: 0; margin-left: 0.4em; }
+.code-wrap { position: relative; }
+.reveal .code-wrap pre.code-block { font-size: 0.42em; margin: 0; }
+.reveal .code-wrap pre.code-block code {
+  max-height: 520px;
+  padding: 0.9em 1.2em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  font: 600 15px 'Inter', sans-serif;
+  color: var(--bg);
+  background: var(--jev);
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+.copy-btn:hover { filter: brightness(1.1); }
+.reveal .code-tip { font-size: 0.5em; color: var(--muted); margin-top: 0.5em; }
