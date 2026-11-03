@@ -202,3 +202,8 @@ body, .reveal-viewport { background: var(--bg); }
 .overflow-cols { grid-template-columns: 1fr 1fr; }
 .reveal .overflow-cols pre.code-block { font-size: 0.5em; }
 .reveal .overflow-cols pre.code-block code { max-height: 470px; overflow: auto; }
+
+.prompt-stack { display: flex; flex-direction: column; gap: 0.6em; }
+.reveal .prompt-stack pre.code-block { font-size: 0.55em; }
+.reveal .prompt-stack pre.code-block code { white-space: pre-wrap; line-height: 1.55; font-variant-ligatures: none; }
+.prompt-stack .copy-btn { top: 0; right: 0; padding: 4px 12px; font-size: 14px; }

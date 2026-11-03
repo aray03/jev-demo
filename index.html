@@ -577,6 +577,29 @@
     <aside class="notes">Live demo: upload a photo in the Playground and ask a Box question.</aside>
   </section>
 
+  <!-- Prompts to use Jev through Claude -->
+  <section>
+    <div class="kicker">Build with Jev</div>
+    <h2 class="code-title">Try it yourself using Claude</h2>
+    <div class="prompt-stack">
+      <div class="code-wrap">
+        <div class="code-label">1 · Install the TypeSafe skill</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-plaintext nohighlight" data-trim data-noescape>
+Install the TypeSafe skill. If you're in Claude Code, run `claude plugin marketplace add typesafe-ai/skills`, then `claude plugin install typesafe@typesafe-ai`. If you're in another agent, run `npx skills add typesafe-ai/skills --skill typesafe-ai` and select your agent. Use one installation method. You can read the skill directly at https://github.com/typesafe-ai/skills/blob/main/skills/typesafe-ai/SKILL.md (raw: https://raw.githubusercontent.com/typesafe-ai/skills/main/skills/typesafe-ai/SKILL.md). Then use the TypeSafe skill when working on this project.
+        </code></pre>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">2 · Ask for Playground JSON</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-plaintext nohighlight" data-trim data-noescape>
+I am using TypeSafe's JEVs playground in https://console.typesafe.ai/playground For that I need a state and questions for that state written in plain JSON. Output this as state.json and question.json
+        </code></pre>
+      </div>
+    </div>
+    <aside class="notes">Paste prompt 1 into Claude Code first, then prompt 2. Claude writes state.json and question.json to paste into the Playground.</aside>
+  </section>
+
   <!-- 11. Judgments vs decisions -->
   <section>
     <div class="kicker">How to build with it</div>
