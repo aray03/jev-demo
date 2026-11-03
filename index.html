@@ -360,6 +360,211 @@
     <aside class="notes">Paste State into the state box and Questions into the questions box at console.typesafe.ai/playground.</aside>
   </section>
 
+  <!-- Overanalyzing texts: all three question types in one request -->
+  <section>
+    <div class="kicker">Try it in the Playground · All three at once</div>
+    <h2 class="code-title">Overanalyzing my texts <span class="muted">8 Nouls, 4 Choices, 4 Scores</span></h2>
+    <div class="cols json-cols overflow-cols">
+      <div class="code-wrap">
+        <div class="code-label">State</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "context": "Texts between me and my girlfriend on a Friday night. We had plans to get dinner at 7 PM at our favorite Italian place.",
+  "facts": "She usually texts in full sentences with lots of emojis. Her replies got slower as the night went on.",
+  "conversation": [
+    {
+      "from": "me",
+      "time": "6:41 PM",
+      "text": "hey running a little late, still finishing this group project"
+    },
+    {
+      "from": "girlfriend",
+      "time": "6:58 PM",
+      "text": "ok"
+    },
+    {
+      "from": "me",
+      "time": "7:02 PM",
+      "text": "sorry!! should be like 20 more min"
+    },
+    {
+      "from": "girlfriend",
+      "time": "7:15 PM",
+      "text": "its fine"
+    },
+    {
+      "from": "me",
+      "time": "7:16 PM",
+      "text": "are you sure? we can do tomorrow instead"
+    },
+    {
+      "from": "girlfriend",
+      "time": "7:31 PM",
+      "text": "I said it's fine."
+    },
+    {
+      "from": "me",
+      "time": "7:32 PM",
+      "text": "ok great! want me to bring anything?"
+    },
+    {
+      "from": "girlfriend",
+      "time": "7:45 PM",
+      "text": "no. I already ate."
+    },
+    {
+      "from": "me",
+      "time": "7:46 PM",
+      "text": "oh nice what did you get"
+    },
+    {
+      "from": "girlfriend",
+      "time": "7:59 PM",
+      "text": "the pasta from the place we were supposed to go to 🙂"
+    },
+    {
+      "from": "me",
+      "time": "8:00 PM",
+      "text": "lol nice was it good"
+    },
+    {
+      "from": "girlfriend",
+      "time": "8:20 PM",
+      "text": "k"
+    }
+  ]
+}
+        </code></pre>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Questions</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-json" data-trim data-noescape>
+{
+  "is_upset": {
+    "type": "noul",
+    "instructions": "My girlfriend is upset with me by the end of `conversation`."
+  },
+  "fine_means_fine": {
+    "type": "noul",
+    "instructions": "When she says \"it's fine\" in `conversation`, it is actually fine."
+  },
+  "smiley_is_sarcastic": {
+    "type": "noul",
+    "instructions": "The 🙂 in her 7:59 PM message is sarcastic."
+  },
+  "ate_there_on_purpose": {
+    "type": "noul",
+    "instructions": "She went to the restaurant from our plans on purpose to make a point."
+  },
+  "k_is_bad": {
+    "type": "noul",
+    "instructions": "Her last message, \"k\", is a bad sign for me."
+  },
+  "i_noticed": {
+    "type": "noul",
+    "instructions": "I (\"me\") noticed she was upset at any point in `conversation`."
+  },
+  "my_fault": {
+    "type": "noul",
+    "instructions": "The problem in `conversation` was caused mostly by me."
+  },
+  "owe_apology": {
+    "type": "noul",
+    "instructions": "I owe her a real apology."
+  },
+  "her_mood": {
+    "type": "choice",
+    "instructions": "How is my girlfriend feeling by the end of `conversation`?",
+    "criteria": {
+      "fine": "Genuinely fine, nothing is wrong",
+      "annoyed": "Mildly annoyed, will be over it soon",
+      "hurt": "Hurt and feeling like she wasn't a priority",
+      "furious": "Very angry"
+    }
+  },
+  "real_problem": {
+    "type": "choice",
+    "instructions": "What is she actually upset about?",
+    "criteria": {
+      "being_late": "I was late to our dinner plans",
+      "project_first": "I put the group project ahead of her",
+      "not_noticing": "I didn't notice she was upset",
+      "nothing": "She isn't upset at all"
+    }
+  },
+  "worst_message": {
+    "type": "choice",
+    "instructions": "Which of my messages in `conversation` made things worse the most?",
+    "criteria": {
+      "running_late": "\"hey running a little late, still finishing this group project\"",
+      "ok_great": "\"ok great! want me to bring anything?\"",
+      "what_did_you_get": "\"oh nice what did you get\"",
+      "lol_nice": "\"lol nice was it good\""
+    }
+  },
+  "best_next_move": {
+    "type": "choice",
+    "instructions": "Which next step would help the most right now?",
+    "criteria": {
+      "call": "Call her instead of texting",
+      "apologize": "Text a sincere apology for being late",
+      "show_up": "Show up with her favorite dessert and apologize in person",
+      "lol": "Send another \"lol\"",
+      "wait": "Wait until tomorrow and act like nothing happened"
+    }
+  },
+  "how_upset": {
+    "type": "score",
+    "instructions": "How upset is she by her last message?",
+    "criteria": [
+      "Totally fine",
+      "A little annoyed",
+      "Clearly upset",
+      "Very upset",
+      "I'm sleeping on the couch"
+    ]
+  },
+  "reply_coldness": {
+    "type": "score",
+    "instructions": "How cold are her replies compared to how she normally texts, as described in `facts`?",
+    "criteria": [
+      "Normal for her",
+      "A bit short",
+      "Noticeably cold",
+      "Ice cold"
+    ]
+  },
+  "my_awareness": {
+    "type": "score",
+    "instructions": "How aware am I (\"me\") of what's going on in `conversation`?",
+    "criteria": [
+      "Fully aware",
+      "Slightly suspicious",
+      "Mostly clueless",
+      "Completely clueless"
+    ]
+  },
+  "trouble_level": {
+    "type": "score",
+    "instructions": "How much trouble am I in?",
+    "criteria": [
+      "None at all",
+      "Minor, a quick sorry fixes it",
+      "We need a real conversation",
+      "Major, this will come up again",
+      "Legendary, she'll bring it up at our wedding"
+    ]
+  }
+}
+        </code></pre>
+      </div>
+    </div>
+    <p class="code-tip">Scroll inside each box. All 16 questions share one state, so you only pay for the conversation once.</p>
+    <aside class="notes">Paste both into the Playground. Read out the funniest answers, like how_upset and trouble_level.</aside>
+  </section>
+
   <!-- 11. Judgments vs decisions -->
   <section>
     <div class="kicker">How to build with it</div>

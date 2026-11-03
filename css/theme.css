@@ -198,3 +198,7 @@ body, .reveal-viewport { background: var(--bg); }
 }
 .json-cols .copy-btn { top: 0; right: 0; padding: 4px 12px; font-size: 14px; }
 .reveal .json-cols pre.code-block code { white-space: pre-wrap; }
+
+.overflow-cols { grid-template-columns: 1fr 1fr; }
+.reveal .overflow-cols pre.code-block { font-size: 0.5em; }
+.reveal .overflow-cols pre.code-block code { max-height: 470px; overflow: auto; }
