@@ -577,29 +577,6 @@
     <aside class="notes">Live demo: upload a photo in the Playground and ask a Box question.</aside>
   </section>
 
-  <!-- Prompts to use Jev through Claude -->
-  <section>
-    <div class="kicker">Build with Jev</div>
-    <h2 class="code-title">Try it yourself using Claude</h2>
-    <div class="prompt-stack">
-      <div class="code-wrap">
-        <div class="code-label">1 · Install the TypeSafe skill</div>
-        <button class="copy-btn" type="button">Copy</button>
-        <pre class="code-block"><code class="language-plaintext nohighlight" data-trim data-noescape>
-Install the TypeSafe skill. If you're in Claude Code, run `claude plugin marketplace add typesafe-ai/skills`, then `claude plugin install typesafe@typesafe-ai`. If you're in another agent, run `npx skills add typesafe-ai/skills --skill typesafe-ai` and select your agent. Use one installation method. You can read the skill directly at https://github.com/typesafe-ai/skills/blob/main/skills/typesafe-ai/SKILL.md (raw: https://raw.githubusercontent.com/typesafe-ai/skills/main/skills/typesafe-ai/SKILL.md). Then use the TypeSafe skill when working on this project.
-        </code></pre>
-      </div>
-      <div class="code-wrap">
-        <div class="code-label">2 · Ask for Playground JSON</div>
-        <button class="copy-btn" type="button">Copy</button>
-        <pre class="code-block"><code class="language-plaintext nohighlight" data-trim data-noescape>
-I am using TypeSafe's JEVs playground in https://console.typesafe.ai/playground For that I need a state and questions for that state written in plain JSON. Output this as state.json and question.json
-        </code></pre>
-      </div>
-    </div>
-    <aside class="notes">Paste prompt 1 into Claude Code first, then prompt 2. Claude writes state.json and question.json to paste into the Playground.</aside>
-  </section>
-
   <!-- 11. Judgments vs decisions -->
   <section>
     <div class="kicker">How to build with it</div>
@@ -624,7 +601,7 @@ I am using TypeSafe's JEVs playground in https://console.typesafe.ai/playground 
   <section>
     <div class="kicker">Let's do it together</div>
     <h2>Make an account</h2>
-    <div class="qr-grid">
+    <div class="qr-grid" style="grid-template-columns:repeat(2, 1fr);max-width:70%;margin:0 auto">
       <div class="card">
         <strong>1 · Sign up / log in</strong>
         <div class="qr" data-qr="https://console.typesafe.ai/"></div>
@@ -635,49 +612,64 @@ I am using TypeSafe's JEVs playground in https://console.typesafe.ai/playground 
         <div class="qr" data-qr="https://console.typesafe.ai/keys"></div>
         <a href="https://console.typesafe.ai/keys" target="_blank">console.typesafe.ai/keys</a>
       </div>
-      <div class="card">
-        <strong>3 · Quickstart</strong>
-        <div class="qr" data-qr="https://docs.typesafe.ai/introduction/quickstart"></div>
-        <a href="https://docs.typesafe.ai/introduction/quickstart" target="_blank">docs.typesafe.ai/…/quickstart</a>
-      </div>
     </div>
     <aside class="notes">Pause here until everyone is logged in. The API key is optional for the Playground.</aside>
   </section>
 
-  <!-- 13. Sandbox -->
+  <!-- Prompts to use Jev through Claude -->
   <section>
-    <div class="kicker">Hands on</div>
-    <h2>Sandbox time</h2>
-    <div class="cols" style="grid-template-columns:1fr 2fr;align-items:center">
-      <div class="card" style="display:flex;flex-direction:column;align-items:center;text-align:center">
-        <div class="qr" data-qr="https://console.typesafe.ai/playground"></div>
-        <a href="https://console.typesafe.ai/playground" target="_blank" style="font-size:0.6em">console.typesafe.ai/playground</a>
+    <div class="kicker">Build with Jev</div>
+    <h2 class="code-title">Try it yourself using Claude</h2>
+    <div class="prompt-stack">
+      <div class="code-wrap">
+        <div class="code-label">1 · Install the TypeSafe skill</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-plaintext nohighlight" data-trim data-noescape>
+Install the TypeSafe skill. If you're in Claude Code, run `claude plugin marketplace add typesafe-ai/skills`, then `claude plugin install typesafe@typesafe-ai`. If you're in another agent, run `npx skills add typesafe-ai/skills --skill typesafe-ai` and select your agent. Use one installation method. You can read the skill directly at https://github.com/typesafe-ai/skills/blob/main/skills/typesafe-ai/SKILL.md (raw: https://raw.githubusercontent.com/typesafe-ai/skills/main/skills/typesafe-ai/SKILL.md). Then use the TypeSafe skill when working on this project.
+        </code></pre>
       </div>
-      <div>
-        <p style="font-size:0.75em">Things to try:</p>
-        <ul style="font-size:0.7em">
-          <li><strong class="accent">Noul</strong>: paste a tweet. "The author is being sarcastic."</li>
-          <li><strong class="accent">Choice</strong>: a support message. Route it to billing, shipping, or tech.</li>
-          <li><strong class="accent">Score</strong>: a restaurant review. "How harsh is it?" on a 1–5 scale.</li>
-          <li><strong class="accent">Box</strong>: upload a photo. "Where is the dog?"</li>
-          <li>Try to trick it, then see how the probability changes.</li>
-        </ul>
+      <div class="code-wrap">
+        <div class="code-label">2 · Ask for Playground JSON</div>
+        <button class="copy-btn" type="button">Copy</button>
+        <pre class="code-block"><code class="language-plaintext nohighlight" data-trim data-noescape>
+I am using TypeSafe's JEVs playground in https://console.typesafe.ai/playground For that I need a state and questions for that state written in plain JSON. Output this as state.json and question.json
+        </code></pre>
       </div>
     </div>
-    <aside class="notes">Give it 10 to 15 minutes. Ask people to share the weirdest answer they got.</aside>
+    <aside class="notes">Paste prompt 1 into Claude Code first, then prompt 2. Claude writes state.json and question.json to paste into the Playground.</aside>
   </section>
 
-  <!-- 14. Resources -->
-  <section class="center">
-    <div class="kicker">Keep going</div>
-    <h2>Resources &amp; Q&amp;A</h2>
-    <ul style="display:inline-block;text-align:left;font-size:0.8em">
-      <li><a href="https://typesafe.ai" target="_blank">typesafe.ai</a>: the company site</li>
-      <li><a href="https://docs.typesafe.ai/introduction" target="_blank">docs.typesafe.ai</a>: docs and quickstart</li>
-      <li><a href="https://docs.typesafe.ai/cookbooks" target="_blank">Cookbooks</a>: worked examples</li>
-      <li><a href="https://docs.typesafe.ai/primitives" target="_blank">Question types</a>: Choice, Noul, Score, Box</li>
-    </ul>
-    <p class="muted" style="font-size:0.6em;margin-top:1.5em">Questions?</p>
+  <!-- Summary -->
+  <section>
+    <div class="kicker">Wrapping up</div>
+    <h2>Summary</h2>
+    <div class="cols-3 summary-grid">
+      <div class="card jev">
+        <h3 class="accent">It judges, it doesn't chat</h3>
+        <p>Jev is a System One model. Send state and a typed question, get back a calibrated probability.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Four question types</h3>
+        <p>Choice, Noul, Score, and Box. Ask lots of them at once about the same state.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Ridiculously cheap</h3>
+        <p>$0.042 per million input tokens and free output. 238× cheaper input than Claude Fable 5.1.</p>
+      </div>
+      <div class="card llm">
+        <h3 class="claude">LLMs still have a job</h3>
+        <p>Use Claude or ChatGPT for writing, coding, and reasoning. Use Jev for fast yes/no and pick-one calls.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Jev judges, code decides</h3>
+        <p>Ask the small judgments, then put the final decision in your own if-statements.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Keep playing</h3>
+        <p><a href="https://console.typesafe.ai/playground" target="_blank">Playground</a> · <a href="https://docs.typesafe.ai/introduction" target="_blank">Docs</a> · <a href="https://docs.typesafe.ai/cookbooks" target="_blank">Cookbooks</a></p>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.6em;margin-top:0.8em;text-align:center">Questions?</p>
   </section>
 
 </div>

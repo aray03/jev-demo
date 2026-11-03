@@ -207,3 +207,6 @@ body, .reveal-viewport { background: var(--bg); }
 .reveal .prompt-stack pre.code-block { font-size: 0.55em; }
 .reveal .prompt-stack pre.code-block code { white-space: pre-wrap; line-height: 1.55; font-variant-ligatures: none; }
 .prompt-stack .copy-btn { top: 0; right: 0; padding: 4px 12px; font-size: 14px; }
+
+.summary-grid .card h3 { font-size: 0.75em; }
+.summary-grid .card p { font-size: 0.6em; line-height: 1.4; }
