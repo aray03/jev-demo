@@ -15,7 +15,6 @@
 
   <!-- 1. Title -->
   <section class="center">
-    <div class="kicker">TypeSafe · System One</div>
     <h1>Jev</h1>
     <h3>AI that answers instead of chatting</h3>
     <p class="muted" style="font-size:0.6em;margin-top:2em">November 2026</p>
@@ -25,9 +24,40 @@
     </aside>
   </section>
 
+  <!-- Pros of integrating AI -->
+  <section>
+    <h2>Pros of integrating AI with software</h2>
+    <div class="cols-3 summary-grid">
+      <div class="card jev">
+        <h3 class="accent">Always-on support</h3>
+        <p>Answer common customer questions at 2 AM without hiring a night shift.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Sort the inbox automatically</h3>
+        <p>Route each email or ticket to billing, shipping, or tech the moment it arrives.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Catch problems early</h3>
+        <p>Flag angry reviews, spam, or abusive messages before a person has to read them.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Personalized experience</h3>
+        <p>Recommend products or content based on what each user says they want.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Do more with a tiny team</h3>
+        <p>Two people can handle the volume of ten by automating the repetitive work.</p>
+      </div>
+      <div class="card jev">
+        <h3 class="accent">Understand users at scale</h3>
+        <p>Read every survey response and review, not just a sample.</p>
+      </div>
+    </div>
+    <aside class="notes">How a small startup or business could use AI with its users. Cons are on the next slide.</aside>
+  </section>
+
   <!-- The problem with LLMs -->
   <section>
-    <div class="kicker">Why this exists</div>
     <h2>The problem with LLMs</h2>
     <div class="cols" style="grid-template-columns:3fr 2fr">
       <div class="card llm" style="font-size:1.05em">
@@ -57,7 +87,6 @@
 
   <!-- 2. What is Jev -->
   <section>
-    <div class="kicker">The basics</div>
     <h2>What is Jev?</h2>
     <ul>
       <li>The first public <span class="accent">System One model</span>, made by TypeSafe</li>
@@ -80,7 +109,6 @@
 
   <!-- 3. System One vs System Two -->
   <section>
-    <div class="kicker">The big difference</div>
     <h2>System One vs System Two</h2>
     <div class="cols">
       <div class="card jev">
@@ -118,7 +146,6 @@
 
   <!-- 4. Recycling detector -->
   <section>
-    <div class="kicker">Example</div>
     <h2>Recycling detector</h2>
     <div class="cols" style="grid-template-columns:3fr 2fr;align-items:center">
       <div>
@@ -134,7 +161,6 @@
 
   <!-- 5. Image detection cost -->
   <section>
-    <div class="kicker">Cost · images</div>
     <h2>Labeling 1,000 images</h2>
     <div class="chart-wrap"><canvas data-chart="chart-image"></canvas></div>
     <div class="footnote">
@@ -149,7 +175,6 @@
 
   <!-- 6. Price per million input tokens -->
   <section>
-    <div class="kicker">Cost · per token</div>
     <h2>Price per million input tokens</h2>
     <div class="chart-wrap"><canvas data-chart="chart-input"></canvas></div>
     <p style="font-size:0.7em;text-align:center;margin-top:0.3em">
@@ -165,7 +190,6 @@
 
   <!-- 7. Million classifications -->
   <section>
-    <div class="kicker">Cost · at scale</div>
     <h2>One million classifications</h2>
     <div class="chart-wrap"><canvas data-chart="chart-classify"></canvas></div>
     <p style="font-size:0.7em;text-align:center;margin-top:0.3em">
@@ -181,7 +205,6 @@
 
   <!-- 8. TypeSafe's benchmark -->
   <section class="center">
-    <div class="kicker">TypeSafe's "trust me bro" benchmarks</div>
     <h2>On System One tasks</h2>
     <div class="cols" style="margin-top:0.8em">
       <div>
@@ -203,7 +226,6 @@
 
   <!-- 9. Pokémon -->
   <section>
-    <div class="kicker">Example</div>
     <h2>Pokémon</h2>
     <div class="cols" style="grid-template-columns:3fr 2fr;align-items:center">
       <div>
@@ -219,7 +241,6 @@
 
   <!-- 10. Question types -->
   <section>
-    <div class="kicker">How you ask</div>
     <h2>Four question types</h2>
     <div class="cols-4">
       <div class="card jev">
@@ -254,7 +275,6 @@
 
   <!-- Playground JSON examples for the question types -->
   <section>
-    <div class="kicker">Try it in the Playground · Choice</div>
     <h2 class="code-title">Choice <span class="muted">Pick one option from a list.</span></h2>
     <div class="cols json-cols">
       <div class="code-wrap">
@@ -294,7 +314,6 @@
   </section>
 
   <section>
-    <div class="kicker">Try it in the Playground · Noul</div>
     <h2 class="code-title">Noul <span class="muted">Probability that a statement is true.</span></h2>
     <div class="cols json-cols">
       <div class="code-wrap">
@@ -324,7 +343,6 @@
   </section>
 
   <section>
-    <div class="kicker">Try it in the Playground · Score</div>
     <h2 class="code-title">Score <span class="muted">A position on levels you describe.</span></h2>
     <div class="cols json-cols">
       <div class="code-wrap">
@@ -362,7 +380,6 @@
 
   <!-- Overanalyzing texts: all three question types in one request -->
   <section>
-    <div class="kicker">Try it in the Playground · All three at once</div>
     <h2 class="code-title">Overanalyzing my texts <span class="muted">8 Nouls, 4 Choices, 4 Scores</span></h2>
     <div class="cols json-cols overflow-cols">
       <div class="code-wrap">
@@ -567,7 +584,6 @@
 
   <!-- Box: try it live in the Playground -->
   <section class="center">
-    <div class="kicker">Try it in the Playground · Box</div>
     <h2>Box <span class="muted" style="font-size:0.5em;font-weight:400">Where something is in an image.</span></h2>
     <div class="card" style="display:inline-flex;flex-direction:column;align-items:center;margin-top:0.4em">
       <div class="qr" data-qr="https://console.typesafe.ai/playground"></div>
@@ -579,7 +595,6 @@
 
   <!-- 11. Judgments vs decisions -->
   <section>
-    <div class="kicker">How to build with it</div>
     <h2>Judgments from Jev,<br>decisions in code</h2>
     <div class="flow">
       <div class="card"><strong>Jev</strong><br><span class="muted">"Is the customer frustrated?"<br>"Is it about a refund?"</span></div>
@@ -599,7 +614,6 @@
 
   <!-- 12. Accounts -->
   <section>
-    <div class="kicker">Let's do it together</div>
     <h2>Make an account</h2>
     <div class="qr-grid" style="grid-template-columns:repeat(2, 1fr);max-width:70%;margin:0 auto">
       <div class="card">
@@ -618,7 +632,6 @@
 
   <!-- Prompts to use Jev through Claude -->
   <section>
-    <div class="kicker">Build with Jev</div>
     <h2 class="code-title">Try it yourself using Claude</h2>
     <div class="prompt-stack">
       <div class="code-wrap">
@@ -641,7 +654,6 @@ I am using TypeSafe's JEVs playground in https://console.typesafe.ai/playground 
 
   <!-- Summary -->
   <section>
-    <div class="kicker">Wrapping up</div>
     <h2>Summary</h2>
     <div class="cols-3 summary-grid">
       <div class="card jev">
