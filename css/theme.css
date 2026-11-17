@@ -213,3 +213,6 @@ body, .reveal-viewport { background: var(--bg); }
 
 .point-cols { grid-template-columns: 3fr 2fr; align-items: center; }
 .reveal .point-title { font-size: 1.1em; margin-bottom: 0.4em; }
+
+.reveal h1.section-title { font-size: 2.2em; margin-bottom: 0.4em; }
+.reveal img.section-img { height: 380px; width: auto; margin: 0 auto; border-radius: 14px; }
