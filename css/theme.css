@@ -217,3 +217,5 @@ body, .reveal-viewport { background: var(--bg); }
 .reveal h1.section-title { font-size: 2.2em; margin-bottom: 0.4em; }
 .reveal img.section-img { height: 380px; width: auto; margin: 0 auto; border-radius: 14px; }
 .point-cols .shot { border: none; background: transparent; }
+
+.reveal p.statement { font-size: 1em; max-width: 26em; margin: 0.6em auto; line-height: 1.45; }
