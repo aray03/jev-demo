@@ -210,3 +210,6 @@ body, .reveal-viewport { background: var(--bg); }
 
 .summary-grid .card h3 { font-size: 0.75em; }
 .summary-grid .card p { font-size: 0.6em; line-height: 1.4; }
+
+.point-cols { grid-template-columns: 3fr 2fr; align-items: center; }
+.reveal .point-title { font-size: 1.1em; margin-bottom: 0.4em; }
