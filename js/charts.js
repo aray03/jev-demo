@@ -1,4 +1,4 @@
-// Standard-tier list prices in USD per 1M tokens, checked Nov 2, 2026.
+// Standard-tier list prices in USD per 1M tokens, checked Nov 17, 2026.
 // Jev: docs.typesafe.ai/models · Claude: platform.claude.com/docs/en/about-claude/pricing
 // OpenAI: developers.openai.com/api/docs/pricing
 const PRICES = [
@@ -6,10 +6,10 @@ const PRICES = [
   { name: 'Claude Haiku 5.5',  family: 'claude', input: 0.10,  output: 0.50 },
   { name: 'GPT-6 Luna',        family: 'gpt',    input: 0.10,  output: 0.50 },
   { name: 'Claude Sonnet 5.5', family: 'claude', input: 2,     output: 10 },
-  { name: 'GPT-6.1 Sol',       family: 'gpt',    input: 2,     output: 10 },
+  { name: 'GPT-6.2 Sol',       family: 'gpt',    input: 2,     output: 10 },
   { name: 'Claude Opus 5.5',   family: 'claude', input: 4,     output: 20 },
-  { name: 'Claude Fable 5.1',  family: 'claude', input: 10,    output: 50 },
-  { name: 'GPT-6 Astra',       family: 'gpt',    input: 10,    output: 50 },
+  { name: 'Claude Fable 5.2',  family: 'claude', input: 8,     output: 40 },
+  { name: 'GPT-6.2 Astra',     family: 'gpt',    input: 8,     output: 40 },
 ];
 
 // Image slide assumptions. TypeSafe hasn't published an image-token formula,
@@ -140,7 +140,7 @@ function fillAssumptions() {
   set('cls-out', CLASSIFY_OUTPUT_TOKENS.toLocaleString());
 
   const jev = PRICES[0];
-  const fable = PRICES.find(p => p.name === 'Claude Fable 5.1');
+  const fable = PRICES.find(p => p.name === 'Claude Fable 5.2');
   const haiku = PRICES.find(p => p.name === 'Claude Haiku 5.5');
   set('x-fable', Math.round(fable.input / jev.input) + '×');
   const imgRatio = jobCost(haiku, IMAGE_INPUT_TOKENS, IMAGE_OUTPUT_TOKENS, 1) /

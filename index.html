@@ -320,11 +320,11 @@
     <div class="chart-wrap"><canvas data-chart="chart-image"></canvas></div>
     <div class="footnote">
       Estimate: <span id="img-tokens"></span> input tokens per image for every model (Claude's w×h/750 formula for a ~1092px photo; TypeSafe hasn't published its image-token formula yet),
-      plus <span id="img-out"></span> output tokens for LLMs. Jev output is free. List prices as of Nov 2, 2026.
+      plus <span id="img-out"></span> output tokens for LLMs. Jev output is free. List prices as of Nov 17, 2026.
     </div>
     <aside class="notes">
       Even against the cheapest LLMs, Jev is about <span id="x-img-haiku"></span> cheaper here,
-      and roughly 275× cheaper than the frontier models.
+      and roughly 220× cheaper than the frontier models.
     </aside>
   </section>
 
@@ -333,10 +333,10 @@
     <h2>Price per million input tokens</h2>
     <div class="chart-wrap"><canvas data-chart="chart-input"></canvas></div>
     <p style="font-size:0.7em;text-align:center;margin-top:0.3em">
-      <span class="accent" style="font-weight:800" id="x-fable"></span> cheaper input than Claude Fable 5.1, and Jev's output is free.
+      <span class="accent" style="font-weight:800" id="x-fable"></span> cheaper input than Claude Fable 5.2, and Jev's output is free.
     </p>
     <div class="footnote">
-      Sources: docs.typesafe.ai/models · platform.claude.com/docs/en/about-claude/pricing · developers.openai.com/api/docs/pricing. Standard tier, Nov 2, 2026.
+      Sources: docs.typesafe.ai/models · platform.claude.com/docs/en/about-claude/pricing · developers.openai.com/api/docs/pricing. Standard tier, Nov 17, 2026.
     </div>
     <aside class="notes">
       $42 per <em>billion</em> tokens. On a normal scale Jev's bar is barely visible. That's the point.
@@ -348,10 +348,10 @@
     <h2>One million classifications</h2>
     <div class="chart-wrap"><canvas data-chart="chart-classify"></canvas></div>
     <p style="font-size:0.7em;text-align:center;margin-top:0.3em">
-      <span class="accent" style="font-weight:800" id="jev-classify"></span> on Jev vs <span class="claude" style="font-weight:800" id="fable-classify"></span> on Claude Fable 5.1
+      <span class="accent" style="font-weight:800" id="jev-classify"></span> on Jev vs <span class="claude" style="font-weight:800" id="fable-classify"></span> on Claude Fable 5.2
     </p>
     <div class="footnote">
-      Assumes <span id="cls-in"></span> input tokens and <span id="cls-out"></span> output tokens per call (e.g. tagging a short message). Standard-tier list prices, Nov 2, 2026.
+      Assumes <span id="cls-in"></span> input tokens and <span id="cls-out"></span> output tokens per call (e.g. tagging a short message). Standard-tier list prices, Nov 17, 2026.
     </div>
     <aside class="notes">
       This is the kind of workload Jev is built for: lots of small yes/no or pick-one decisions.
@@ -821,7 +821,7 @@ I am using TypeSafe's JEVs playground in https://console.typesafe.ai/playground 
       </div>
       <div class="card jev">
         <h3 class="accent">Ridiculously cheap</h3>
-        <p>$0.042 per million input tokens and free output. 238× cheaper input than Claude Fable 5.1.</p>
+        <p>$0.042 per million input tokens and free output. 190× cheaper input than Claude Fable 5.2.</p>
       </div>
       <div class="card llm">
         <h3 class="claude">LLMs still have a job</h3>
