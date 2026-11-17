@@ -775,12 +775,16 @@
   <!-- 11. Judgments vs decisions -->
   <section>
     <h2>Judgments from Jev,<br>decisions in code</h2>
-    <div class="flow">
-      <div class="card"><strong>Jev</strong><br><span class="muted">"Is the customer frustrated?"<br>"Is it about a refund?"</span></div>
+    <div class="flow pipeline">
+      <div class="card"><strong>Input of user</strong><br><span class="muted">a message, photo, or form</span></div>
       <div class="arrow">→</div>
-      <div class="card"><strong>Your code</strong><br><span class="muted">a truth table / if-statements</span></div>
+      <div class="card"><strong>Code</strong><br><span class="muted">builds state + questions</span></div>
       <div class="arrow">→</div>
-      <div class="card" style="border-color:var(--jev)"><strong class="accent">Action</strong><br><span class="muted">escalate · auto-reply · ignore</span></div>
+      <div class="card" style="border-color:var(--jev)"><strong class="accent">JEV</strong><br><span class="muted">returns probabilities</span></div>
+      <div class="arrow">→</div>
+      <div class="card"><strong>Code</strong><br><span class="muted">if-statements decide</span></div>
+      <div class="arrow">→</div>
+      <div class="card"><strong>Output to user</strong><br><span class="muted">reply, action, or result</span></div>
     </div>
     <ul style="font-size:0.7em;margin-top:1em">
       <li>Don't ask "Should we escalate?" Ask the small judgments the decision depends on.</li>
@@ -789,6 +793,28 @@
     <aside class="notes">
       Keeps the logic visible and testable. Jev supplies inputs; code owns the decision.
     </aside>
+  </section>
+
+  <!-- Example walk-through of the pipeline -->
+  <section>
+    <h2>What that looks like</h2>
+    <div class="steps">
+      <div class="step"><span class="step-pill">Input of user</span>
+        <div class="step-body"><span class="imsg-bubble received step-bubble">My order showed up smashed. Can I get my money back?</span></div></div>
+      <div class="step"><span class="step-pill">Code</span>
+        <div class="step-body"><pre class="step-code">state = {"email": message}
+questions = {
+    "is_refund":  Noul("`email` asks for a refund"),
+    "is_damaged": Noul("`email` says the item arrived damaged"),
+}</pre></div></div>
+      <div class="step"><span class="step-pill jev-pill">JEV</span>
+        <div class="step-body"><code>{"is_refund": 0.97, "is_damaged": 0.95}</code></div></div>
+      <div class="step"><span class="step-pill">Code</span>
+        <div class="step-body"><code>if is_refund &gt; 0.7 and is_damaged &gt; 0.7: issue_refund()</code></div></div>
+      <div class="step"><span class="step-pill">Output to user</span>
+        <div class="step-body"><span class="imsg-bubble sent step-bubble">So sorry it arrived damaged! Your refund is on its way.</span></div></div>
+    </div>
+    <aside class="notes">Jev only answers the two yes/no questions. Your code decides to refund and picks the reply.</aside>
   </section>
 
   <!-- 12. Accounts -->

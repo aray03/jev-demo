@@ -306,3 +306,24 @@ body, .reveal-viewport { background: var(--bg); }
   content: ''; position: absolute; right: -4px; top: 3px;
   width: 2px; height: 5px; background: #000; border-radius: 0 1px 1px 0;
 }
+
+.flow.pipeline { gap: 0.3em; font-size: 0.6em; }
+.flow.pipeline .card { min-width: 0; padding: 0.6em 0.7em; }
+
+.steps { display: flex; flex-direction: column; gap: 0.45em; }
+.step { display: grid; grid-template-columns: 7.5em 1fr; align-items: center; gap: 0.8em; }
+.step-pill {
+  font-size: 0.5em; font-weight: 600; text-align: center;
+  padding: 0.5em 0.6em; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+}
+.step-pill.jev-pill { border-color: var(--jev); color: var(--jev); }
+.step-body { font-size: 0.55em; line-height: 1.7; }
+.step-body code { font-size: 0.95em; }
+.reveal .step-bubble { display: inline-block; max-width: none; font-size: 1.05em; }
+.reveal pre.step-code {
+  margin: 0; width: auto; box-shadow: none;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.95em; line-height: 1.45;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.3em 0.6em; white-space: pre; display: inline-block;
+}
